@@ -1,0 +1,57 @@
+<html>
+  <body></body>
+  <script>
+    const prices = {
+      hotdog: 3.25,
+      fries: 2.0,
+      drink: 1.5,
+    };
+
+    const hotdogs = prompt("How many hotdogs?", "1");
+    const fries = prompt("How many fries?", "1");
+    const drinks = prompt("How many drinks?", "1");
+
+    let total =
+      parseInt(hotdogs) * prices.hotdog +
+      parseInt(fries) * prices.fries +
+      parseInt(drinks) * prices.drink;
+
+    const discount = () => {
+      let str = ``;
+
+      if (total > 20) {
+        str += "You qualified for our 10% discount</br>";
+        total = Math.round(total * 0.9 * 100) / 100;
+      }
+      str += `Subtotal: ${total}`;
+      return str;
+    };
+
+    const tax = () => {
+      return Math.round(total * 0.0625 * 100) / 100;
+    };
+
+    document.body.innerHTML = `
+    <h1>Welcome to Joes hotdogs!</h1>
+
+    <h3>Order Summary:</h3>
+    <p>
+    # Hotdogs: ${hotdogs} at $${prices.hotdog} is $${
+      parseInt(hotdogs) * prices.hotdog
+    }
+    </br>
+    # Fries: ${fries} at $${prices.fries} is $${parseInt(fries) * prices.fries}
+    </br>
+    # Drinks: ${drinks} at $${prices.drink} is $${
+      parseInt(drinks) * prices.drink
+    }
+    </br>
+    ${discount()}
+    </br>
+    Tax: $${tax()}
+    </br>
+    Total: $${Math.round((total + tax()) * 100) / 100}
+    </p>
+    `;
+  </script>
+</html>

@@ -1,0 +1,58 @@
+<html>
+  <body></body>
+  <script>
+    let nums = [];
+
+    for (var i = 0; i < 5; i++) {
+      nums.push(Math.floor(Math.random() * Math.floor(48)) + 1)
+    }
+
+    const lucky = Math.floor(Math.random() * Math.floor(18)) + 1
+
+    let regNums = prompt('Enter your 5 numbers:');
+    regNums = regNums.split(' ');
+    
+    const luckyNum = prompt('Enter your lucky number:')
+
+    let matched = 0;
+
+    nums = [2, 3, 4, 5, 6]
+
+
+    nums.forEach((e, i) => {
+      if (regNums.includes(e.toString())) matched++;
+    })
+
+    const win = () => {
+      const isLucky = (lucky == luckyNum) ? true : false
+      if (isLucky) {
+        return `You win! Your payout is $${luckyWinners[matched]}`
+      } else {
+        if (winners[matched] == 0) return 'You lost!'
+        return `You win! Your payout is $${winners[matched]}`
+      }
+    }
+
+    const luckyWinners = ['4', '6', '25', '150', '5,000', '7,000 / week for life']
+    const winners = ['0', '0', '3', '20', '200', '25,000 / year for life']
+
+    document.body.innerHTML = `
+      <p>
+      The quick pick numbers are: ${nums.join(' ')}
+      </br>
+      The lucky ball number is: ${lucky}
+      </br>
+      </br>
+
+      The winning numbers are: ${regNums.join(' ')}
+      </br>
+      The lucky ball number is: ${luckyNum}
+      </br>
+      </br>
+      ${win()}
+      </p>
+
+    ` 
+
+  </script>
+</html>
